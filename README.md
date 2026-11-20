@@ -1,5 +1,7 @@
 # AI Environment for VR Study: German Medical VR
 
+[![checks](https://github.com/PhamAnhHoangg/AI-environment-for-VR-study/actions/workflows/ci.yml/badge.svg)](https://github.com/PhamAnhHoangg/AI-environment-for-VR-study/actions/workflows/ci.yml)
+
 A VR environment for learning medical German. A Python backend with a local LLM (Ollama), speech recognition (Whisper) and a text-to-speech doctor drives a Unity 6 scene: you talk to an NPC doctor, quiz yourself on objects in the room, and use the Builder mode to have an AI generate new room variations.
 
 This repository holds the Python services, the Unity C# scripts and the helper scripts. It does **not** contain the Unity project itself (scenes, `ProjectSettings/`, `Packages/`). See [Unity side](#unity-side).
@@ -105,3 +107,7 @@ Everything machine-specific is an environment variable. Set one permanently with
 ├── deploy_vr.bat            Build and install on a Meta Quest
 └── requirements*.txt        Python dependencies
 ```
+
+## License
+
+MIT, see [LICENSE](LICENSE). The Unity project itself, third-party packages and the Ollama and Whisper models are not part of this repository and have their own licenses.

@@ -1,0 +1,21 @@
+name: checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  python-syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      # Syntax only: the heavy packages (torch, whisper) are not installed, and the Unity C# code needs the
+      # Unity editor, so neither is built here.
+      - name: Python files compile
+        run: python -m compileall -q .
+      - name: Required files exist
+        run: test -f requirements.txt && test -f room_config.json && python -c "import json; json.load(open('room_config.json'))"
