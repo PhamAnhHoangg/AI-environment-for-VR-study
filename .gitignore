@@ -17,7 +17,7 @@ all_python_versions.txt
 full_pip_list.txt
 git_push_log.txt
 
-# Room manager leftovers (feature was removed)
+# Room manager was removed (room_manager.py deleted); ignore its old data
 rooms/
 rooms_registry.json
 
@@ -32,3 +32,24 @@ Builds/
 # OS
 Thumbs.db
 .DS_Store
+
+# Local runtime data (set UNITY_PROJECT_DIR / AI_OUTPUT_DIR to keep these elsewhere)
+unity_project/
+output/
+room_ai_history.json
+.env
+
+# Unity (when the Unity project lives inside this folder)
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+.vs/
+.idea/
+*.csproj
+*.sln
+*.apk
+*.aab
