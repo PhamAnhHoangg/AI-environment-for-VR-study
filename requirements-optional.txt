@@ -1,0 +1,17 @@
+# Optional extras. Each feature degrades gracefully without them.
+# Install with: pip install -r requirements-optional.txt
+
+# Offline fallback voice if edge-tts has no internet (tts_server.py)
+pyttsx3>=2.90
+
+# Random room colour palettes fetched from the web (color_fetcher.py)
+beautifulsoup4>=4.12.0
+
+# Local Stable Diffusion for NPC sprites and room presets (generate_npc.py, generate_presets.py)
+diffusers>=0.25.0
+transformers>=4.36.0
+accelerate>=0.25.0
+
+# Pixel-art conversion of NPC sprites via pixel-me.tokyo (pixelize_npc.py)
+playwright>=1.40.0
+# then run once: playwright install chromium
