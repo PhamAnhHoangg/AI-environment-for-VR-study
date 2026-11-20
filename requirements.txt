@@ -1,17 +1,19 @@
-# AI_HDRI_Unity — Python dependencies
+# German Medical VR: core Python dependencies
 # Install with: pip install -r requirements.txt
+# Image generation and the pixel-art tools are optional: see requirements-optional.txt
 
 # Web UI
 gradio>=4.0.0
+matplotlib>=3.7.0
 
-# API server (Whisper endpoint)
+# API servers (Whisper speech-to-text, doctor text-to-speech)
 fastapi>=0.100.0
 uvicorn[standard]>=0.23.0
+python-multipart>=0.0.6
+edge-tts>=6.1.0
 
 # Speech recognition
 openai-whisper>=20231117
-
-# Deep learning (whisper dependency)
 torch>=2.0.0
 torchaudio>=2.0.0
 
@@ -20,8 +22,5 @@ soundfile>=0.12.1
 numpy>=1.24.0
 Pillow>=10.0.0
 
-# HTTP requests (image quiz downloads)
+# HTTP requests (Ollama, image downloads)
 requests>=2.31.0
-
-# Utilities
-python-multipart>=0.0.6
