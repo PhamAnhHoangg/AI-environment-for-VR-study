@@ -7,13 +7,13 @@ Pipeline:
   2. PIL removes white background  ->  transparent PNG
   3. pixelize_npc.py uploads to pixel-me.tokyo  ->  pixel art PNG (Unity-ready)
 
-Run from E:/ai_generator/ai_generator/:
+Run from the repository folder:
     python generate_npc.py                     # doctor (default)
     python generate_npc.py receptionist        # receptionist
 
 Output (pixel art, transparent):
-    E:/ai_generator/output/npc_<name>.png
-    E:/ai_generator/ai_generator/assets/npc_<name>.png
+    <AI_OUTPUT_DIR>/npc_<name>.png      (see vr_config.py)
+    ./assets/npc_<name>.png
 """
 
 import sys, logging, torch, numpy as np
@@ -24,7 +24,8 @@ from diffusers import StableDiffusionPipeline, DPMSolverMultistepScheduler
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 logger = logging.getLogger(__name__)
 
-OUTPUT_DIR = Path("E:/ai_generator/output")
+from vr_config import AI_OUTPUT_DIR
+OUTPUT_DIR = AI_OUTPUT_DIR
 ASSETS_DIR = Path(__file__).parent / "assets"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 ASSETS_DIR.mkdir(parents=True, exist_ok=True)

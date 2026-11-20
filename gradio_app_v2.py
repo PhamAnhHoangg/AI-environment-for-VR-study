@@ -4,7 +4,7 @@ gradio_app_v2.py — German Medical VR Language Learning
 Tab 1  LEARNER MODE : 2 fixed rooms, NPC bilingual chat
 Tab 2  BUILDER MODE : AI generates a variation of Doctor or Reception room
 
-Run:  "E:\Python\python.exe" gradio_app_v2.py
+Run:  python gradio_app_v2.py      (or START_ALL.bat to start every service)
 """
 
 import base64
@@ -366,10 +366,10 @@ def drop_last_word(text):
     return "" if i < 0 else text[:i]
 
 # ── Config ─────────────────────────────────────────────────────────────────────
-OUTPUT_DIR   = r"E:\AI_HDRI_Unity"
+# Machine-specific values come from environment variables (see vr_config.py).
+from vr_config import UNITY_PROJECT_DIR, OLLAMA_URL, OLLAMA_MODEL, BIND_HOST
+OUTPUT_DIR   = str(UNITY_PROJECT_DIR)
 CONFIG_FILE  = os.path.join(OUTPUT_DIR, "room_config.json")
-OLLAMA_URL   = "http://localhost:11434/api/generate"
-OLLAMA_MODEL = "llama3.2:3b"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # ── Fixed room objects (same every room) ────────────────────────────────────────
@@ -1244,4 +1244,4 @@ if __name__ == "__main__":
     print(f"  Ollama : {'✅ running' if ollama_available() else '❌ run: ollama serve'}")
     print(f"  Model  : {'✅ ready'   if ollama_model_ready(OLLAMA_MODEL) else f'❌ run: ollama pull {OLLAMA_MODEL}'}")
     print("=" * 60)
-    demo.queue().launch(server_name="0.0.0.0", server_port=7863, share=False, inbrowser=True)
+    demo.queue().launch(server_name=BIND_HOST, server_port=7863, share=False, inbrowser=True)

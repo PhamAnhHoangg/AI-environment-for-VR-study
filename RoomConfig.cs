@@ -7,9 +7,9 @@
 ///   3. Press Play in Unity — everything else is automatic.
 ///
 /// FINDING YOUR OUTPUT FOLDER:
-///   - Windows default: C:\ai_generator\output  OR  E:\ai_generator\output
-///   - Mac default:     /Users/yourname/ai_generator/output
-///   - Linux default:   /home/yourname/ai_generator/output
+///   - Leave OutputFolder empty to use the Unity project root (where the Gradio
+///     app writes room_config.json), or set it to your AI_OUTPUT_DIR folder.
+///   - Image folder default: AI_OUTPUT_DIR env var, else "ai_output" next to Assets.
 ///   Look for these files inside: wall_front.png, wall_back.png, wall_left.png,
 ///   wall_right.png, floor.png, ceiling.png
 /// </summary>

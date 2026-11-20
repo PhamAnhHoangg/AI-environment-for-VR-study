@@ -12,7 +12,7 @@ using UnityEngine.Networking;
 ///   Reads query strings from RoomConfigLoader and fetches images via Unsplash API.
 ///
 /// IMAGE SOURCE:
-///   1. First checks for local cached file: E:\ai_generator\output\pic_left.png etc.
+///   1. First checks for local cached file: <AI_OUTPUT_DIR>/pic_left.png etc.
 ///   2. If not cached, fetches from Unsplash via the public source URL.
 ///   3. Saves fetched image to cache for offline use.
 ///
@@ -30,7 +30,8 @@ public class WallPictureLoader : MonoBehaviour
     public float frameHeight = 0.9f;
 
     [Header("Cache folder (local PNG files)")]
-    public string cacheFolder = @"E:\ai_generator\output";
+    [Tooltip("Leave empty to use AI_OUTPUT_DIR (see AIOutputPaths).")]
+    public string cacheFolder = "";
 
     // Unsplash source URL — no API key needed, returns a random image for the query
     private const string UnsplashBase = "https://source.unsplash.com/800x600/?";
@@ -39,6 +40,7 @@ public class WallPictureLoader : MonoBehaviour
 
     void Start()
     {
+        if (string.IsNullOrEmpty(cacheFolder)) cacheFolder = AIOutputPaths.Dir;
         StartCoroutine(PlaceAllPictures());
     }
 

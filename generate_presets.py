@@ -6,7 +6,7 @@ Each of the 6 faces is generated independently:
   - floor:   flat top-down texture
   - ceiling: flat plain white texture
 
-Run ONCE from E:/ai_generator/ai_generator/:
+Run ONCE from the repository folder:
     python generate_presets.py
 """
 

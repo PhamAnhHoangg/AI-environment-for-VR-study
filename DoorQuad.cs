@@ -6,7 +6,7 @@ using UnityEngine;
 ///
 /// SETUP:
 ///   1. Attach this script to the same GameObject as AIRoomBox (or any child).
-///   2. Drop a door PNG into E:\ai_generator\output\door.png
+///   2. Drop a door PNG into <AI_OUTPUT_DIR>/door.png (see AIOutputPaths)
 ///      (or generate one with the Gradio app / Poly Haven / etc.)
 ///   3. Hit Play — door appears centered on the front wall.
 ///
@@ -16,8 +16,8 @@ using UnityEngine;
 public class DoorQuad : MonoBehaviour
 {
     [Header("Texture")]
-    [Tooltip("Full path to door PNG. If file not found, door shows a solid brown placeholder.")]
-    public string doorTexturePath = @"E:\ai_generator\output\door.png";
+    [Tooltip("Full path to door PNG. Leave empty to use <AI_OUTPUT_DIR>/door.png. If the file is not found, the door shows a solid brown placeholder.")]
+    public string doorTexturePath = "";
 
     [Header("Door Size (meters)")]
     public float doorWidth  = 1.2f;
@@ -34,6 +34,7 @@ public class DoorQuad : MonoBehaviour
 
     void Start()
     {
+        doorTexturePath = AIOutputPaths.Resolve(doorTexturePath, "door.png");
         SpawnDoor();
     }
 

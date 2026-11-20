@@ -19,10 +19,11 @@ setlocal EnableDelayedExpansion
 :: ── CONFIG — edit these to match your setup ─────────────────────────────────
 
 :: Path to Unity executable (update Unity version number as needed)
-set UNITY_EXE=C:\Program Files\Unity\Hub\Editor\2022.3.62f1\Editor\Unity.exe
+if not defined UNITY_EXE set UNITY_EXE=C:\Program Files\Unity\Hub\Editor\6000.4.3f1\Editor\Unity.exe
 
 :: Path to this Unity project
 set PROJECT_PATH=%~dp0
+if defined UNITY_PROJECT_DIR set PROJECT_PATH=%UNITY_PROJECT_DIR%\
 
 :: Where the APK is built
 set APK_PATH=%~dp0Builds\GermanVR.apk

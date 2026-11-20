@@ -29,6 +29,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import Response
 from pydantic import BaseModel
 import uvicorn
+from vr_config import BIND_HOST
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger("tts_server")
@@ -146,7 +147,7 @@ async def speak(req: SpeakRequest):
 
 # ── entry point ───────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    log.info("Doctor TTS server starting on http://localhost:7866")
+    log.info(f"Doctor TTS server starting on http://{BIND_HOST}:7866")
     log.info(f"  Primary voice (DE): {VOICE_DE}")
     log.info(f"  Primary voice (EN): {VOICE_EN}")
-    uvicorn.run(app, host="0.0.0.0", port=7866)
+    uvicorn.run(app, host=BIND_HOST, port=7866)

@@ -22,8 +22,8 @@ import requests
 from pathlib import Path
 from typing import Optional
 
-# ── Unity destination paths ────────────────────────────────────────────────────
-UNITY_ASSETS  = Path(r"E:\AI_HDRI_Unity\Assets")    # auto-deploy target
+# ── Unity destination paths (set UNITY_PROJECT_DIR, see vr_config.py) ──────────
+from vr_config import UNITY_ASSETS                   # auto-deploy target
 WORKSPACE_DIR = Path(__file__).parent                # local backup
 
 # ── Filler words stripped when building the class / file name ─────────────────
