@@ -12,7 +12,7 @@ Start with:
     python whisper_server.py
 
 Install dependencies (run once):
-    pip install openai-whisper fastapi uvicorn python-multipart --break-system-packages
+    pip install openai-whisper fastapi uvicorn python-multipart
 
 Models (set WHISPER_MODEL env var or edit MODEL below):
     tiny   — fastest, lowest accuracy (~39 MB)
@@ -34,7 +34,7 @@ try:
     import whisper
 except ImportError:
     print("\n❌ openai-whisper not installed.")
-    print("   Run: pip install openai-whisper --break-system-packages\n")
+    print("   Run: pip install openai-whisper\n")
     raise
 
 try:
@@ -44,11 +44,12 @@ try:
     from fastapi.responses import JSONResponse
 except ImportError:
     print("\n❌ FastAPI/uvicorn not installed.")
-    print("   Run: pip install fastapi uvicorn python-multipart --break-system-packages\n")
+    print("   Run: pip install fastapi uvicorn python-multipart\n")
     raise
 
 # ── configuration ─────────────────────────────────────────────────────────────
-HOST        = os.getenv("WHISPER_HOST",     "0.0.0.0")
+from vr_config import BIND_HOST
+HOST        = os.getenv("WHISPER_HOST",     BIND_HOST)
 PORT        = int(os.getenv("WHISPER_PORT", "7864"))
 MODEL_NAME  = os.getenv("WHISPER_MODEL",    "base")
 LANGUAGE    = os.getenv("WHISPER_LANGUAGE", None)   # None = auto-detect; "de" = German only

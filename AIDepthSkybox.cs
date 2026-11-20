@@ -22,8 +22,10 @@ using UnityEngine.Rendering;
 public class AIDepthSkybox : MonoBehaviour
 {
     [Header("File Paths")]
-    public string colorImagePath = @"E:\ai_generator\output\scene_360.png";
-    public string depthImagePath = @"E:\ai_generator\output\scene_360_depth.png";
+    [Tooltip("Leave empty to use <AI_OUTPUT_DIR>/scene_360.png (see AIOutputPaths).")]
+    public string colorImagePath = "";
+    [Tooltip("Leave empty to use <AI_OUTPUT_DIR>/scene_360_depth.png (see AIOutputPaths).")]
+    public string depthImagePath = "";
 
     [Header("Sphere Settings")]
     [Tooltip("Radius of the environment sphere. Camera must be at origin (0,0,0).")]
@@ -50,6 +52,8 @@ public class AIDepthSkybox : MonoBehaviour
 
     void Start()
     {
+        colorImagePath = AIOutputPaths.Resolve(colorImagePath, "scene_360.png");
+        depthImagePath = AIOutputPaths.Resolve(depthImagePath, "scene_360_depth.png");
         BuildSphere();
 
         if (File.Exists(colorImagePath) && File.Exists(depthImagePath))

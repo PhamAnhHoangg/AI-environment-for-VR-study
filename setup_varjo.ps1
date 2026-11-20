@@ -1,4 +1,8 @@
-$manifest = "E:\AI_HDRI_Unity\Packages\manifest.json"
+if (-not $env:UNITY_PROJECT_DIR) {
+    Write-Host "ERROR: set UNITY_PROJECT_DIR to your Unity project folder first." -ForegroundColor Red
+    exit 1
+}
+$manifest = Join-Path $env:UNITY_PROJECT_DIR "Packages\manifest.json"
 
 if (-not (Test-Path $manifest)) {
     Write-Host "ERROR: manifest.json not found at $manifest" -ForegroundColor Red

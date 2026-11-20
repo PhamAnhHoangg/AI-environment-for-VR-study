@@ -2,13 +2,21 @@
 title Sync scripts to Unity project
 color 0A
 
-set UNITY=E:\AI_HDRI_Unity\Assets
+if not defined UNITY_PROJECT_DIR (
+    echo Set UNITY_PROJECT_DIR to your Unity project folder first, for example:
+    echo   setx UNITY_PROJECT_DIR "D:\Projects\MyUnityProject"
+    echo Then open a new terminal and run this script again.
+    pause
+    exit /b 1
+)
+set UNITY=%UNITY_PROJECT_DIR%\Assets
 set SRC=%~dp0
 
 echo Copying C# scripts to Unity project...
 
 for %%f in (
     AIDepthSkybox.cs
+    AIOutputPaths.cs
     AIRoomBox.cs
     AISkyboxReceiver.cs
     ChairCorner.cs

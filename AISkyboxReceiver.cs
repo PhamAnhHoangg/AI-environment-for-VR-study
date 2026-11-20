@@ -10,7 +10,8 @@ using UnityEngine.Rendering;
 public class AISkyboxReceiver : MonoBehaviour
 {
     [Header("Image Path")]
-    public string watchPath = @"E:\ai_generator\output\scene_360.png";
+    [Tooltip("Leave empty to use <AI_OUTPUT_DIR>/scene_360.png (see AIOutputPaths).")]
+    public string watchPath = "";
 
     private Material _skyboxMat;
     private FileSystemWatcher _watcher;
@@ -21,6 +22,8 @@ public class AISkyboxReceiver : MonoBehaviour
 
     void Start()
     {
+        watchPath = AIOutputPaths.Resolve(watchPath, "scene_360.png");
+
         // Create a Panoramic skybox material
         _skyboxMat = new Material(Shader.Find("Skybox/Panoramic"));
         RenderSettings.skybox = _skyboxMat;

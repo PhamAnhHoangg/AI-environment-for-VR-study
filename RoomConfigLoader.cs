@@ -10,7 +10,7 @@ using UnityEngine;
 ///   Attach to the same GameObject as AIRoomBox. It auto-reads on Start.
 ///   All other scripts call RoomConfigLoader.Instance to get data.
 ///
-/// JSON format expected at E:\ai_generator\output\room_config.json:
+/// JSON format expected at <Unity project root>/room_config.json (written by the Gradio app):
 /// {
 ///   "room_type": "Arztpraxis",
 ///   "palette": {
