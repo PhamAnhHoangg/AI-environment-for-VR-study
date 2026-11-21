@@ -5,7 +5,6 @@ Unity's AISkyboxReceiver.cs script applies it as a panoramic skybox.
 """
 
 import os
-import json
 import logging
 import requests
 from pathlib import Path

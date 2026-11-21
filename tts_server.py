@@ -19,10 +19,8 @@ Speed: rate="+0%" normal · "+15%" slightly faster · "+30%" fast
 Run: python tts_server.py  →  http://localhost:7866
 """
 
-import asyncio
 import io
 import os
-import sys
 import tempfile
 import logging
 from fastapi import FastAPI, HTTPException

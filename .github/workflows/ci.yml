@@ -6,16 +6,20 @@ on:
   pull_request:
 
 jobs:
-  python-syntax:
+  python:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
-      # Syntax only: the heavy packages (torch, whisper) are not installed, and the Unity C# code needs the
-      # Unity editor, so neither is built here.
+      # The heavy packages (torch, whisper, gradio) are not installed, and the Unity C# code needs the
+      # Unity editor, so neither is run here. These checks need only the standard library and ruff.
       - name: Python files compile
         run: python -m compileall -q .
-      - name: Required files exist
-        run: test -f requirements.txt && test -f room_config.json && python -c "import json; json.load(open('room_config.json'))"
+      - name: Lint for real errors (syntax, undefined names, unused variables)
+        run: |
+          pip install ruff
+          ruff check --select E9,F63,F7,F82,F841 .
+      - name: Tests (room config, colour rules, settings)
+        run: python -m unittest discover -s tests -v

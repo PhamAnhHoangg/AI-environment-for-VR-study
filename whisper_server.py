@@ -23,11 +23,9 @@ Models (set WHISPER_MODEL env var or edit MODEL below):
 """
 
 import os
-import io
 import time
 import tempfile
 import traceback
-import asyncio
 
 # ── dependencies ──────────────────────────────────────────────────────────────
 try:

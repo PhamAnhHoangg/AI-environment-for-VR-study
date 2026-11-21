@@ -84,6 +84,14 @@ Everything machine-specific is an environment variable. Set one permanently with
 - **Whisper is slow**: install PyTorch with CUDA: `pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu118`
 - **Unity does not find generated images**: make sure Unity and the Python tools use the same `AI_OUTPUT_DIR`. Unity only sees variables that were set before Unity Hub started.
 
+## Checks
+
+GitHub Actions runs on every push and pull request: all Python files must compile, `ruff` looks for real errors (syntax, undefined names, unused variables), and `tests/test_basics.py` checks `room_config.json` (colours, German nouns with their article), the room colour rules (walls and ceiling the same bright colour) and the settings in `vr_config.py`. The heavy AI packages and the Unity C# code are not run there. Run the tests yourself with:
+
+```
+python -m unittest discover -s tests -v
+```
+
 ## Repository layout
 
 ```

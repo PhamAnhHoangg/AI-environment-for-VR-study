@@ -12,7 +12,6 @@ import json
 import os
 import re
 import tempfile
-import time
 import requests
 import gradio as gr
 
@@ -449,7 +448,6 @@ BUILDER_ROOM_TYPES = {
 
 # ── Colour palettes ─────────────────────────────────────────────────────────────
 import random as _random
-import colorsys as _colorsys
 
 # Each scheme: (wall_hex, ceiling_hex, floor_hex)
 # Rule: wall=bright pastel, ceiling=slightly lighter wall, floor=clearly darker
